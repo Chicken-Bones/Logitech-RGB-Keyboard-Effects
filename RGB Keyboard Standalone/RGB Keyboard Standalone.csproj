@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F2446903-0EC6-47B4-BA4A-E108DA170AE6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CodeChicken.RGBKeyboard</RootNamespace>
+    <AssemblyName>RGB Keyboard Standalone</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\RGB Keyboard Unity\Assets\Plugins\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\Config.cs">
+      <Link>Shared\Config.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\CurveTest.cs">
+      <Link>Shared\CurveTest.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\KeyboardState.cs">
+      <Link>Shared\KeyboardState.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\KeyCodeMap.cs">
+      <Link>Shared\KeyCodeMap.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\KeyLocations.cs">
+      <Link>Shared\KeyLocations.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\LightingEffect.cs">
+      <Link>Shared\LightingEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\LLKeyboardHook.cs">
+      <Link>Shared\LLKeyboardHook.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\LogitechGSDK.cs">
+      <Link>Shared\LogitechGSDK.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\RippleEffect.cs">
+      <Link>Shared\RippleEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\RGB Keyboard Unity\Assets\Shared\VK.cs">
+      <Link>Shared\VK.cs</Link>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="UnityEngine\AnimationCurve.cs" />
+    <Compile Include="UnityEngine\Color.cs" />
+    <Compile Include="UnityEngine\Color32.cs" />
+    <Compile Include="UnityEngine\Keyframe.cs" />
+    <Compile Include="UnityEngine\Mathf.cs" />
+    <Compile Include="UnityEngine\Vector2.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\RGB Keyboard Unity\Assets\Plugins\LogitechLedEnginesWrapper.dll">
+      <Link>LogitechLedEnginesWrapper.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
