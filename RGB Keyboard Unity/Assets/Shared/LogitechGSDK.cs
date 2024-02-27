@@ -4,7 +4,6 @@ using System.Text;
 
 namespace LedCSharp
 {
-
     public enum keyboardNames
     {
         ESC = 0x01,
@@ -111,8 +110,27 @@ namespace LedCSharp
         ARROW_RIGHT = 0x14D,
         NUM_ZERO = 0x52,
         NUM_PERIOD = 0x53,
-		G_LOGO = 0xFFFF1,
-	};
+        G_1 = 0xFFF1,
+        G_2 = 0xFFF2,
+        G_3 = 0xFFF3,
+        G_4 = 0xFFF4,
+        G_5 = 0xFFF5,
+        G_6 = 0xFFF6,
+        G_7 = 0xFFF7,
+        G_8 = 0xFFF8,
+        G_9 = 0xFFF9,
+        G_LOGO = 0xFFFF1,
+        G_BADGE = 0xFFFF2
+    };
+
+    public enum DeviceType
+    {
+        Keyboard = 0x0,
+        Mouse = 0x3,
+        Mousemat = 0x4,
+        Headset = 0x8,
+        Speaker = 0xe
+    }
 
     public class LogitechGSDK
     {
@@ -124,6 +142,8 @@ namespace LedCSharp
         public const int LOGI_DEVICETYPE_MONOCHROME = (1 << LOGI_DEVICETYPE_MONOCHROME_ORD);
         public const int LOGI_DEVICETYPE_RGB = (1 << LOGI_DEVICETYPE_RGB_ORD);
         public const int LOGI_DEVICETYPE_PERKEY_RGB = (1 << LOGI_DEVICETYPE_PERKEY_RGB_ORD);
+        public const int LOGI_DEVICETYPE_ALL = (LOGI_DEVICETYPE_MONOCHROME | LOGI_DEVICETYPE_RGB | LOGI_DEVICETYPE_PERKEY_RGB);
+
         public const int LOGI_LED_BITMAP_WIDTH = 21;
         public const int LOGI_LED_BITMAP_HEIGHT = 6;
         public const int LOGI_LED_BITMAP_BYTES_PER_KEY = 4;
@@ -133,6 +153,9 @@ namespace LedCSharp
 
         [DllImport("LogitechLedEnginesWrapper", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool LogiLedInit();
+
+        [DllImport("LogitechLedEnginesWrapper", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool LogiLedInitWithName(String name);
 
         //Config option functions
         [DllImport("LogitechLedEnginesWrapper", CallingConvention = CallingConvention.Cdecl)]
@@ -204,6 +227,9 @@ namespace LedCSharp
 
         [DllImport("LogitechLedEnginesWrapper", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool LogiLedStopEffectsOnKey(keyboardNames keyName);
+
+        [DllImport("LogitechLedEnginesWrapper", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool LogiLedSetLightingForTargetZone(DeviceType deviceType, int zone, int redPercentage, int greenPercentage, int bluePercentage);
 
         [DllImport("LogitechLedEnginesWrapper", CallingConvention = CallingConvention.Cdecl)]
         public static extern void LogiLedShutdown();
